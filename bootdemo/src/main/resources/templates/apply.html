@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>apply | boot</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/apply.css}">
+</head>
+<body>
+<div id="main">
+    <div id="mainHead">
+        申请管理
+    </div>
+    <span></span>
+    <div id="mainLeft">
+        <ul id="leftUl" style="margin: 0 0 0 -40px">
+            <li class="colorA"><a href="#leave">请假申请</a></li>
+            <li><a href="#addwork">加班申请</a></li>
+            <li><a href="#away">离职申请</a></li>
+            <li><a href="#butie">补贴申请</a></li>
+            <li><a href="#move">人事调整申请</a></li>
+
+        </ul>
+        <ul style="margin: 15%;visibility: hidden;" class="text-center">
+            <li style="height: 160px">lio1</li>
+            <li style="height: 160px">lio1</li>
+        </ul>
+    </div>
+    <span style="float: right" th:text="'/今日：'+${#dates.format(result.today,'yyyy-MM-dd')}">1</span>
+    <span style="float: right" th:text="'访问IP：'+${result.ip}">2</span>
+    <div id="mainRight">
+        <div id="leave">
+            <fieldset id="tb">
+                <legend>申请人信息</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>申请编号</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>申请日期</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>姓名</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>员工号</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>部门</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>职位</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>项目经理</td>
+                        <td>[[${result.appId}]]</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset id="tb1">
+                <legend>请假详情</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>序号</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </fieldset>
+            <!--<div th:replace="flowInfo :: flow"></div>-->
+            <div id="bton">
+                <button class="btn" onclick="saveLeave()">保存</button>
+                <button class="btn" onclick="submitLeave()">提交</button>
+            </div>
+        </div>
+        <div id="addwork" style="display: none">
+            <fieldset id="tb">
+                <legend>申请人信息</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>申请编号</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>申请日期</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>姓名</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>员工号</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>部门</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>职位</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>项目经理</td>
+                        <td>[[${result.appId}]]</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset id="tb1">
+                <legend>加班详情</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </fieldset>
+            <div id="bton">
+                <button class="btn" onclick="saveAddwork()">保存</button>
+                <button class="btn" onclick="submitAddwork()">提交</button>
+            </div>
+        </div>
+        <div id="away" style="display: none">
+            <fieldset id="tb">
+                <legend>申请人信息</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>申请编号</td>
+                        <td>[[${result.appId}]]</td>
+                        <td colspan="2"></td>
+                        <td>申请日期</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>姓名</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>员工号</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>部门</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>职位</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>入职日期</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>合同到期日</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>项目经理</td>
+                        <td>[[${result.appId}]]</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset id="tb1">
+                <legend>离职详情</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </fieldset>
+            <div id="bton">
+                <button class="btn" onclick="saveAway()">保存</button>
+                <button class="btn" onclick="submitAway()">提交</button>
+            </div>
+        </div>
+        <div id="butie" style="display: none">
+            <fieldset id="tb">
+                <legend>申请人信息</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>申请编号</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>申请日期</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>姓名</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>员工号</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>部门</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>职位</td>
+                        <td>[[${result.appId}]]</td>
+                    </tr>
+                    <tr>
+                        <td>项目经理</td>
+                        <td>[[${result.appId}]]</td>
+                        <td colspan="2"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <fieldset id="tb1">
+                <legend>补贴详情</legend>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>1</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td>2</td>
+                    </tr>
+                </table>
+            </fieldset>
+            <div id="bton">
+                <button class="btn" onclick="saveButie()">保存</button>
+                <button class="btn" onclick="submitButie()">提交</button>
+            </div>
+        </div>
+        <div id="move" style="display: none">
+            <div style="margin: 5% 0 -4% 4%">
+                <button class="btn" onclick="searchMove()">查询</button>
+                <button class="btn" onclick="getMove()">导出</button>
+            </div>
+            <div id="tb">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <td>序号</td>
+                        <td>申请编号</td>
+                        <td>申请日期</td>
+                        <td>申请人</td>
+                        <td>员工号</td>
+                        <td>部门</td>
+                        <td>申请日期</td>
+                        <td>审批状态</td>
+                        <td>操作</td>
+                    </tr>
+                    </thead>
+                    <tr>
+                        <td><input type="button" class="btn btn-link" id="nobtn" disabled value="1"></td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>[[${result.appId}]]</td>
+                        <td>
+                            <button class="btn">+</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/bootstrap.min.js"></script>
+
+<script>
+    $(function () {
+        $("#leftUl>li").click(function () {
+            $(this).addClass("colorA").siblings().removeClass("colorA");
+            var index = $(this).index();
+            $("#mainRight>div").eq(index).show().siblings().hide();
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>welcome | boot</title>
+</head>
+<body>
+<div>
+    生成姓名：
+    <hr>
+    <div th:if="${result.flag} eq 0">
+        nameMap:
+        <!--<span>[[${result.getNameA}]]</span>-->
+        <div th:each="listA:${result.getNameA}">
+            <span th:text="${listA}"></span>
+        </div>
+        <br/>
+        namelist:
+        <!--[[${result.getNameB}]]-->
+        <div th:each="listB:${result.getNameB}">
+            <span th:text="${listB}"></span>
+        </div>
+        <br/>
+        get Full Name:<br/>
+        <span th:utext="${#strings.replace(result.getNameFull,'t','<br>')}"></span>
+
+    </div>
+    <div th:if="${result.flag} eq 1">123</div>
+</div>
+</body>
+</html>

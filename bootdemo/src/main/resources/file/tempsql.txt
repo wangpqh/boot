@@ -1,0 +1,42 @@
+2021-06-01 tue 1 1 normal,
+2021-06-02 wen 1 1 normal,
+2021-06-03 thr 1 1 normal,
+2021-06-04 Fri 1 1 normal,
+
+
+
+创建 存储过程 名字(out 参数1，in参数2，...)
+begin
+    语句
+end
+
+in      输入参数，传入值
+out     输出参数，返回值
+inout   输入输出参数，尽量少用
+
+
+```sql
+--查询
+CREATE PROCEDURE getUserById(IN uid VARCHAR(8))
+BEGIN
+    SELECT id,name,partment,position FROM t_employ WHERE id=uid;
+END
+```
+mysql命令中添加
+delimiter //
+//
+表示某部分是存储过程，执行后记得 改回分号
+```sql
+--插入用户
+CREATE PROCEDURE insert_user(
+	OUT u_id INTEGER,
+	IN u_name VARCHAR(20),
+	IN u_sex VARCHAR(20),
+	IN u_age INTEGER)
+BEGIN
+	INSERT INTO t_user (name,sex,age) VALUES (u_name,u_sex,u_age);
+	SET u_id=LAST_INSERT_ID();--？？
+END
+```
+mybatis中如果存储过程是有参数的，需要指定mode属性，可选值有IN、OUT和INOUT。
+当mode为OUT或INOUT时必须同时指定jdbcType。

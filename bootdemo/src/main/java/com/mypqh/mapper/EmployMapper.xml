@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//maybatis.org//DTD Mapper 3.0//EN"  "http://myvatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mypqh.mapper.EmployMapper">
+
+    <select id="getAll" resultType="com.mypqh.common.Employ">
+        SELECT * FROM t_employ;
+    </select>
+
+    <select id="getAllRe" resultMap="employMap">
+        select employId,name,depart_name,position from t_employ e,t_departs d where e.departId=d.depart_id;
+    </select>
+
+    <resultMap id="employMap" type="com.mypqh.common.Employ">
+        <result column="employId" property="id"/>
+        <result column="name" property="name"/>
+        <result column="depart_name" property="department"/>
+        <result column="position" property="position"/>
+    </resultMap>
+
+    <select id="getById" parameterType="String" resultType="com.mypqh.common.Employ">
+        SELECT id,name,position FROM t_employ WHERE id=#{id};
+    </select>
+
+    <select id="getByIdCall" parameterMap="String" resultType="com.mypqh.common.Employ" statementType="CALLABLE">
+        {call getById(#{id,mode=IN})}
+    </select>
+
+    </mapper>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>showDatatable</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{/css/apply.css}">
+</head>
+<body>
+<div>
+    <div id="mainHead">show Datatable</div>
+    <br>
+    <div id="mainLeft"></div>
+    <div id="mainRight">
+        <div style="padding: 5%">
+            <table id="data_table">
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>工号</th>
+                    <th>部门</th>
+                    <th>日期</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script>
+    $(function () {
+        var table = $("#data_table").DataTable({
+            ajax: function (data, callback, settings) {
+                $.ajax({
+                    type: "GET",
+                    dataType: "json",
+                    processing: true,
+                    serverSide: true,
+                    url: "data.json",
+                    success: function (result) {
+                        var returndata = {};
+                        returndata.draw = result.draw;
+                        returndata.total = result.total;
+                        // returndata.recordsFiltered = result.recordsFiltered;
+                        returndata.data = result.data;
+                        callback(returndata);
+                    }
+                })
+            },
+            columns: [{data: "name"}, {data: "starf_id"}, {data: "depart"}, {data: "date"},],
+        });
+        $("#data_table td").css("text-algin", "center");
+    })
+</script>
+</body>
+</html>

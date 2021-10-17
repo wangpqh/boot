@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery.dataTables.min.css}">
+    <link rel="stylesheet" th:href="@{/css/apply.css}">
+    <style>
+        #sun,#mon,#tue,#wen,#thr,#fri,#sat{
+            text-align: center;
+            vertical-align: middle;
+        }
+        #sun,#sat{
+            background-color: #ccc;
+        }
+        #mon,#tue,#thr,#fri{
+            background-color: #f4f2f2;
+        }
+        td{
+            height: 70px;
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div id="mainHead">show Datatable</div>
+    <br>
+    <div id="mainLeft"></div>
+    <div id="mainRight">
+        <div style="padding: 5%">
+            <table id="data_table">
+                <thead>
+                <tr>
+                    <th id="sun">周日</th>
+                    <th id="mon">周一</th>
+                    <th id="tue">周二</th>
+                    <th id="wen">周三</th>
+                    <th id="thr">周四</th>
+                    <th id="fri">周五</th>
+                    <th id="sat">周六</th>
+                </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
+<script>
+    $(function () {
+        var table = $("#data_table").DataTable({
+            info: false,
+            select: false,
+            paging: false,
+            searching: false,
+            ajax: function (data, callback, settings) {
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    processing: true,
+                    serverSide: true,
+                    url: "/queryCal",
+                    success: function (result) {
+                        var returndata = {};
+                        returndata.draw = result.draw;
+                        returndata.total = result.total;
+                        returndata.recordsFiltered = result.recordsFiltered;
+                        returndata.data = result.data;
+                        callback(returndata);
+                    }
+                })
+            },
+            columns: [
+                {
+                    data: "Sun",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Mon",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Tue",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Wen",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Thr",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Fri",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                },
+                {
+                    data: "Sat",
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        if (cellData.isWork === 0) {
+                            tdColor(td,col);
+                        }
+                    },
+                    render: function (data, type, row) {
+                        if (data.isWork === 0) {
+                            return data.date;
+                        }
+                        if (data.status === 1) {
+                            return data.date + "<br>(" + data.other + ")";
+                        } else if (data.status === 2) {
+                            return data.date + "<br>late<br>" + data.other;
+                        }
+                        return data.date + "<br>early<br>" + data.other;
+                    }
+                }
+            ]
+        });
+        $("#data_table").css('text-algin', 'center');
+
+        function tdColor(select) {
+            $(select).css('background-color', '#ededed');
+            $(select).css('color', 'red');
+
+        }
+    })
+</script>
+
+</body>
+</html>

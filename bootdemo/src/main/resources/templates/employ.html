@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+[[${result}]]
+
+
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>工号</th>
+        <th>部门</th>
+        <th>职位</th>
+    </tr>
+    <tr th:each="employ:${result}">
+        <td th:text="${employ.id}"></td>
+        <td th:text="${employ.name}"></td>
+        <td th:text="${employ.department}"></td>
+        <td th:text="${employ.position}"></td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,80 @@
+#main{
+    width: 80%;
+    margin: 0 10%;
+}
+#mainHead{
+    font-size: 23px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #cae2ca;
+}
+#tb,#tb1,#tb2{
+    width: 95%;
+    margin: 5% 0 5% 4%;
+    /*上右下左*/
+}
+fieldset{
+    padding:.35em .625em .75em;
+    margin: 0 2px;
+    border: 1px solid silver;
+}
+legend{
+    padding: .5em;
+    border: 0;
+    width: auto;
+    margin-bottom: 0px;
+}
+td{
+    height: 30px;
+    color: #3c763d;
+    line-height: 30px;
+}
+#mainLeft{
+    width: 15%;
+    float: left;
+    border-right:1px solid #111111;
+}
+li{
+    color: #3c763d;
+    height: 40px;
+    line-height: 40px;
+    list-style: none;
+    text-align: center;
+}
+li:hover{
+    background-color: #ecf5ec;
+}
+#mainRight{
+    margin-left: 15%;
+}
+a{
+    color: #3c763d;
+    text-decoration: none;
+}
+a:hover,a:link,a:visited{
+    color: #3c763d;
+    text-decoration: none;
+}
+#bton{
+    margin: 0 0 5% 86%;
+}
+.colorA{
+    background-color: #deecde;
+}
+input[type="date"]::-webkit-inner-spin-button{
+    display: none;
+}
+#nobtn{
+    text-align: center;
+    color: #3c763d;
+}
+#nobtn{
+    cursor: none;
+}
+
+#mainContent{
+    margin: 1% 1%;
+    background-color: #c7edcc;
+    text-indent:35px;
+}
