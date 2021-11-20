@@ -1,7 +1,11 @@
 package com.mypqh.common;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class UserInfo {
+    @ApiModelProperty(value = "用户名")
     private String username;
+    @ApiModelProperty(value = "MIMA")
     private String password;
 
     public String getUsername() {
