@@ -8,6 +8,8 @@ public class UserInfo {
     @ApiModelProperty(value = "MIMA")
     private String password;
 
+    private String agreeBox;
+
     public String getUsername() {
         return username;
     }
@@ -22,5 +24,13 @@ public class UserInfo {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAgreeBox() {
+        return agreeBox;
+    }
+
+    public void setAgreeBox(String agreeBox) {
+        this.agreeBox = agreeBox;
     }
 }
