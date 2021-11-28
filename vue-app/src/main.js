@@ -5,6 +5,8 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 
 var axios = require('axios')
 axios.defaults.baseURL = 'http://localhost:8081/api'
@@ -13,6 +15,7 @@ Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
+Vue.use(MintUI)
 
 /* eslint-disable no-new */
 new Vue({
