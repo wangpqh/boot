@@ -1,10 +1,19 @@
 <template>
-  <img src="../assets/logo.png">
+  <div>
+    <img src="../assets/logo.png">
+    <span>{{ msg }}</span>
+  </div>
+
 </template>
 
 <script>
   export default {
-    name: 'Order'
+    name: 'Order',
+    data() {
+      return {
+        msg: this.$router.params
+      }
+    }
   }
 </script>
 

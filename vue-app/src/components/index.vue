@@ -2,37 +2,63 @@
   <div>
     <el-card>
       <div class="city">
-        <span v-model="tiket.startCity" style="float: left;">南京</span>
+        <input v-model="tiket.startCity" style="float: left;"></input>
         <img src="../assets/change.png" width="20" height="20" />
-        <span v-model="tiket.endCity" style="float: right;">南通</span>
+        <input v-model="tiket.endCity" style="float: right;"></input>
       </div><br>
-      <div class="date">11月27日 周六</div><br>
+      <div class="date"><input v-model="tiket.date"></input></div><br>
       <div class="other">
         <span>只看高铁/动车</span>
         <el-checkbox v-model="tiket.highway"></el-checkbox>
         <span>学生票</span>
         <el-checkbox v-model="tiket.student"></el-checkbox>
-
       </div><br>
       <div class="but">
-        <mt-button size="large" type="primary">查询车票</mt-button>
+        <mt-button size="large" type="primary" @click="query()">查询车票</mt-button>
       </div>
-
     </el-card>
+    <first>
+      <template v-slot:show>组件给插槽给first</template>
+    </first>
   </div>
 </template>
 
 <script>
+  import first from '@/components/first'
   export default {
     name: 'index',
+    components: {
+      first
+    },
     data() {
       return {
         tiket: {
-          startCity: '',
-          endCity: '',
-          highway: '',
-          student: ''
+          startCity: '南京',
+          endCity: '南通',
+          date: '11月27日 周六',
+          highway: false,
+          student: false
         }
+      }
+    },
+    methods: {
+      query() {
+        this.$axios.post(
+          '/train/query', {
+            start: this.tiket.startCity,
+            end: this.tiket.endCity,
+            date: this.tiket.date,
+            highSpeed: this.tiket.highway,
+            student: this.tiket.student
+          }).then(successRsp => {
+          if (successRsp.data.resultCode === '200') {
+            this.$router.push({
+              name: 'Order',
+              params: successRsp.data
+            })
+          }
+        })
+
       }
     }
   }
