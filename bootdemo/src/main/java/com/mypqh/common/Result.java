@@ -1,13 +1,9 @@
 package com.mypqh.common;
 
-public class Result {
+public class Result<T> {
     private String resultCode;
     private String resultDetail;
-
-    public Result(String code, String detail){
-        this.resultCode=code;
-        this.resultDetail=detail;
-    }
+    private String resultData;
 
     public String getResultCode() {
         return resultCode;
@@ -23,5 +19,13 @@ public class Result {
 
     public void setResultDetail(String resultDetail) {
         this.resultDetail = resultDetail;
+    }
+
+    public String getResultData() {
+        return resultData;
+    }
+
+    public void setResultData(String resultData) {
+        this.resultData = resultData;
     }
 }
