@@ -7,7 +7,7 @@
         <el-menu-item v-for="(item,i) in arr" :key="i" :index="item.id">{{item.option}}</el-menu-item>
       </el-submenu>
       <el-menu-item index="3" id="center">管理中心</el-menu-item>
-      <!--      <el-submenu index="2-4">
+      <!--     <el-submenu index="2-4">
         <template slot="title">选项4</template>
         <el-menu-item index="2-4-1">选项1</el-menu-item>
         <el-menu-item index="2-4-2">选项2</el-menu-item>

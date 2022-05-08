@@ -72,7 +72,7 @@
               path: '/hello'
             })
           } else {
-            this.$message({ // element提示框
+            this.$message({  // element提示框
               showClose: true,
               message: 'login failed',
               type: 'error'
