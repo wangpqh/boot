@@ -17,18 +17,19 @@
         <mt-button size="large" type="primary" @click="query()">查询车票</mt-button>
       </div>
     </el-card>
-    <first>
+    <first :msg="firstmsg">
       <template v-slot:show>组件给插槽给first</template>
+      <!-- <template slot:show>组件给插槽给first</template> -->
     </first>
   </div>
 </template>
 
 <script>
-  import first from '@/components/first'
+  import First from '@/components/First'
   export default {
     name: 'index',
     components: {
-      first
+      First
     },
     data() {
       return {
@@ -41,7 +42,13 @@
         }
       }
     },
-    methods: {
+    props: { //父组件与子组件传值
+      firstmsg: {
+        type: String,
+        default: 'first msg'
+      }
+    },
+    methods: { //方法
       query() {
         this.$axios.post(
           '/train/query', {

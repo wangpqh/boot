@@ -20,8 +20,8 @@
           id: "service",
           value: "服务"
         }, {
-          id: "order",
-          value: "订单"
+          id: "first",
+          value: "第一"
         }, {
           id: "my",
           value: "我的"
@@ -38,8 +38,8 @@
             case 'service':
               this.$router.push('/hello');
               break;
-            case 'order':
-              this.$router.push('/order');
+            case 'first':
+              this.$router.push('/first');
               break;
             case 'my':
               this.$router.push('/login');
