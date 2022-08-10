@@ -4,6 +4,7 @@
     <router-view></router-view>
     <bot-tab></bot-tab>
   </div>
+
 </template>
 
 <script>
